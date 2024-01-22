@@ -1,7 +1,13 @@
 "use client";
 
+import {
+	SignedIn,
+	UserButton,
+	SignedOut,
+	SignInButton,
+} from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
-import Header from "./header";
+import Header from "../header";
 
 export default function Home() {
 	const { isAuthenticated, isLoading } = useConvexAuth();
@@ -9,13 +15,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<main className="flex p-24">
-				{isAuthenticated ? (
-					<h1>I am logged in</h1>
-				) : (
-					<h1>I am not logged in</h1>
-				)}
-			</main>
+			<main className="flex p-24">Dashboard Page</main>
 		</>
 	);
 }
