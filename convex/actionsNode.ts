@@ -15,17 +15,12 @@ export const getOpenAiAnswer = internalAction({
 		id: v.id("jobs"),
 	},
 	handler: async (ctx, { id, prompt }) => {
-		const identity = await ctx.auth.getUserIdentity();
-		if (!identity) {
-			return;
-		}
-
 		const completion = await openai.chat.completions.create({
 			messages: [
 				{
 					role: "system",
 					content:
-						"What is the number one job someone could get with these skills: " +
+						"What is considered the top job someone could get with these skills. Don't include the question or skills in the response. skills: " +
 						prompt,
 				},
 			],

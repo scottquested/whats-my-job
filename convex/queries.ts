@@ -7,7 +7,14 @@ export const getJobs = query({
 			return;
 		}
 
-		const jobs = await ctx.db.query("jobs").collect();
+		const jobs = await ctx.db
+			.query("jobs")
+			.filter((q) => {
+				// Only get jobs for the current user
+				return q.eq(q.field("userId"), identity.subject);
+			})
+			.collect();
+
 		return jobs;
 	},
 });

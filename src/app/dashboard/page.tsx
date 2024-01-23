@@ -1,21 +1,24 @@
-"use client";
-
-import {
-	SignedIn,
-	UserButton,
-	SignedOut,
-	SignInButton,
-} from "@clerk/clerk-react";
-import { useConvexAuth } from "convex/react";
+import DashboardLayout from "@/components/DashboardLayout";
 import Header from "../header";
+import { cookies } from "next/headers";
 
 export default function Home() {
-	const { isAuthenticated, isLoading } = useConvexAuth();
+	const layout = cookies().get("react-resizable-panels:layout");
+	const collapsed = cookies().get("react-resizable-panels:collapsed");
+
+	const defaultLayout = layout ? JSON.parse(layout.value) : undefined;
+	const defaultCollapsed = collapsed ? JSON.parse(collapsed.value) : undefined;
 
 	return (
 		<>
 			<Header />
-			<main className="flex p-24">Dashboard Page</main>
+			<main className="h-svh">
+				<DashboardLayout
+					navCollapsedSize={4}
+					defaultCollapsed={defaultCollapsed}
+					defaultLayout={defaultLayout}
+				/>
+			</main>
 		</>
 	);
 }

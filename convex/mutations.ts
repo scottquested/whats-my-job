@@ -31,11 +31,6 @@ export const updateJobs = internalMutation({
 		result: v.string(),
 	},
 	handler: async (ctx, { id, result }) => {
-		const identity = await ctx.auth.getUserIdentity();
-		if (!identity) {
-			return;
-		}
-
 		await ctx.db.patch(id, {
 			result,
 		});
