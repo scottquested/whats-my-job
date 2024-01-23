@@ -5,7 +5,6 @@ export default defineSchema({
 	jobs: defineTable({
 		skills: v.string(),
 		result: v.optional(v.string()),
-		title: v.string(),
 		userId: v.string(),
 		status: v.union(
 			v.literal("pending"),

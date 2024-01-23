@@ -86,8 +86,12 @@ export default function DashboardLayout({
 					/>
 				</ResizablePanel>
 				<ResizableHandle withHandle />
-				<ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
-					<div className="p-5 pb-10 overflow-scroll">
+				<ResizablePanel
+					defaultSize={defaultLayout[1]}
+					minSize={30}
+					className="!overflow-scroll"
+				>
+					<div className="p-5 pb-10 mb-32 h-full">
 						{activeTab === 0 && <JobForm />}
 						{activeTab === 1 && <JobList />}
 					</div>

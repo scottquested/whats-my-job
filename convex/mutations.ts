@@ -3,8 +3,8 @@ import { internal } from "./_generated/api";
 import { internalMutation, mutation } from "./_generated/server";
 
 export const saveJobs = mutation({
-	args: { skills: v.string(), userId: v.string(), title: v.string() },
-	handler: async (ctx, { skills, userId, title }) => {
+	args: { skills: v.string(), userId: v.string() },
+	handler: async (ctx, { skills, userId }) => {
 		const identity = await ctx.auth.getUserIdentity();
 		if (!identity) {
 			return;
@@ -13,7 +13,6 @@ export const saveJobs = mutation({
 		const jobs = await ctx.db.insert("jobs", {
 			userId,
 			skills,
-			title,
 			status: "pending",
 		});
 
@@ -52,7 +51,7 @@ export const retryJob = mutation({
 export const updateJob = internalMutation({
 	args: {
 		id: v.id("jobs"),
-		result: v.string(),
+		result: v.optional(v.string()),
 		status: v.union(
 			v.literal("pending"),
 			v.literal("completed"),

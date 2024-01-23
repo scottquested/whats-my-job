@@ -9,7 +9,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<main className="flex p-24">
+			<main className="flex">
 				{isAuthenticated ? (
 					<h1>I am logged in</h1>
 				) : (

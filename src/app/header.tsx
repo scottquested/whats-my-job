@@ -14,7 +14,7 @@ import { ArrowRight } from "lucide-react";
 export default function Header() {
 	const path = usePathname();
 	return (
-		<header className="flex justify-between items-center p-4 border-b-2 border-gray-800">
+		<header className="flex justify-between items-center p-4 border-b-2 border-gray-100 dark:border-gray-800 fixed w-full bg-white dark:bg-slate-950 dark:text-white">
 			<Link href="/">WHAT&apos;S MY JOB</Link>
 			<div className="flex items-center gap-3">
 				<SignedIn>

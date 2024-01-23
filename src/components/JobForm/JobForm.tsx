@@ -21,8 +21,7 @@ import {
 import { Card } from "../ui/card";
 
 const formSchema = z.object({
-	title: z.string().min(1, "This field is required."),
-	skills: z.string(),
+	skills: z.string().min(1, "This field is required."),
 });
 
 export default function JobForm() {
@@ -32,7 +31,6 @@ export default function JobForm() {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			title: "",
 			skills: "",
 		},
 	});
@@ -43,7 +41,6 @@ export default function JobForm() {
 
 		await saveJobs({
 			skills: data.skills,
-			title: data.title,
 			userId: user.id,
 		});
 
@@ -59,22 +56,6 @@ export default function JobForm() {
 			<Card className="p-5 max-w-[500px]">
 				<Form {...form}>
 					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-						<FormField
-							control={form.control}
-							name="title"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Title</FormLabel>
-									<FormControl>
-										<Input placeholder="Add a title..." {...field} />
-									</FormControl>
-									<FormDescription className="text-xs italic">
-										This is your title for the job generation.
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
 						<FormField
 							control={form.control}
 							name="skills"

@@ -2,7 +2,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import Header from "../header";
 import { cookies } from "next/headers";
 
-export default function Home() {
+export default function Dashboard() {
 	const layout = cookies().get("react-resizable-panels:layout");
 	const collapsed = cookies().get("react-resizable-panels:collapsed");
 
@@ -12,7 +12,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<main className="h-svh">
+			<main className="h-svh pt-[74px]">
 				<DashboardLayout
 					navCollapsedSize={4}
 					defaultCollapsed={defaultCollapsed}
