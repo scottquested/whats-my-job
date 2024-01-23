@@ -16,6 +16,7 @@ import JobForm from "../JobForm";
 import JobList from "../JobList";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { DashboardNavVariant } from "../DashboardNav/DashboardNav.types";
 
 export default function DashboardLayout({
 	navCollapsedSize,
@@ -62,34 +63,34 @@ export default function DashboardLayout({
 						isCollapsed={isCollapsed}
 						links={[
 							{
+								title: "New Job",
+								icon: PlusSquare,
+							},
+							{
 								title: "Jobs",
 								label: (jobs?.length || 0).toString(),
 								icon: Inbox,
-								variant: "default",
-							},
-							{
-								title: "New Job",
-								icon: PlusSquare,
-								variant: "ghost",
+								loading: jobs?.some((job) => job?.status === "pending"),
 							},
 						].map((tab, index) => {
 							return {
 								...tab,
 								active: index === activeTab,
-								variant: activeTab === index ? "default" : "ghost",
+								variant:
+									activeTab === index
+										? DashboardNavVariant.Default
+										: DashboardNavVariant.Ghost,
 							};
 						})}
 						setActiveTab={setActiveTab}
 					/>
 				</ResizablePanel>
 				<ResizableHandle withHandle />
-				<ResizablePanel
-					defaultSize={defaultLayout[1]}
-					minSize={30}
-					className="p-5"
-				>
-					{activeTab === 0 && <JobList />}
-					{activeTab === 1 && <JobForm />}
+				<ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
+					<div className="p-5 pb-10 overflow-scroll">
+						{activeTab === 0 && <JobForm />}
+						{activeTab === 1 && <JobList />}
+					</div>
 				</ResizablePanel>
 			</ResizablePanelGroup>
 		</TooltipProvider>

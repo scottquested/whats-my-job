@@ -1,7 +1,7 @@
 const authConfig = {
 	providers: [
 		{
-			domain: "https://immense-dog-88.clerk.accounts.dev",
+			domain: process.env.CLERK_DOMAIN,
 			applicationID: "convex",
 		},
 	],

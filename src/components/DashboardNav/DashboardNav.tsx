@@ -1,15 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-	Archive,
-	ArchiveX,
-	Inbox,
-	Send,
-	Trash2,
-	File,
-	LucideIcon,
-} from "lucide-react";
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { buttonVariants } from "../ui/button";
@@ -67,7 +59,10 @@ export default function DashboardNav({
 						>
 							<link.icon className="mr-2 h-4 w-4" />
 							{link.title}
-							{link.label && (
+							{link.loading && (
+								<Loader2 className="animate-spin h-4 w-4 ml-auto" />
+							)}
+							{link.label && !link.loading && (
 								<span
 									className={cn(
 										"ml-auto",
