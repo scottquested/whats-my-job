@@ -51,8 +51,7 @@ export default function DashboardNav({
 							href="#"
 							className={cn(
 								buttonVariants({ variant: link.variant, size: "sm" }),
-								link.variant === "default" &&
-									"dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
+								link.variant === "default",
 								"justify-start"
 							)}
 							onClick={() => setActiveTab(index)}

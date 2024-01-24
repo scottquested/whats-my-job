@@ -9,13 +9,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<main className="flex">
-				{isAuthenticated ? (
-					<h1>I am logged in</h1>
-				) : (
-					<h1>I am not logged in</h1>
-				)}
-			</main>
+			<main className="h-svh pt-24">Home page!</main>
 		</>
 	);
 }

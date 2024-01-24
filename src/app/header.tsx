@@ -7,24 +7,24 @@ import {
 	SignedOut,
 	SignInButton,
 } from "@clerk/clerk-react";
+import { Briefcase } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight } from "lucide-react";
 
 export default function Header() {
 	const path = usePathname();
 	return (
-		<header className="flex justify-between items-center p-4 border-b-2 border-gray-100 dark:border-gray-800 fixed w-full bg-white dark:bg-slate-950 dark:text-white">
-			<Link href="/">WHAT&apos;S MY JOB</Link>
+		<header className="flex justify-between items-center p-4 border-b-2 border-gray-100 dark:border-gray-800 fixed w-full bg-background dark:text-white">
+			<Link
+				href="/"
+				className="font-bold text-xl flex items-center justify-center gap-2"
+			>
+				<Briefcase className="text-orange-500" /> What&apos;s my job?
+			</Link>
 			<div className="flex items-center gap-3">
 				<SignedIn>
 					{!path.includes("dashboard") && (
-						<Link
-							href="/dashboard"
-							className="flex items-center justify-between bg-slate-400 py-1 px-2 rounded-md text-white"
-						>
-							Dashboard <ArrowRight />
-						</Link>
+						<Link href="/dashboard">Go to Dashboard</Link>
 					)}
 					<UserButton afterSignOutUrl="\" />
 				</SignedIn>

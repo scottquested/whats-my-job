@@ -13,10 +13,10 @@ import {
 import DashboardNav from "../DashboardNav";
 import { DashboardLayoutProps } from "./DashboardLayout.types";
 import JobForm from "../JobForm";
-import JobList from "../JobList";
-import { useQuery } from "convex/react";
+import { useConvexAuth, useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { DashboardNavVariant } from "../DashboardNav/DashboardNav.types";
+import Jobs from "../Jobs";
 
 export default function DashboardLayout({
 	navCollapsedSize,
@@ -27,6 +27,16 @@ export default function DashboardLayout({
 	const [activeTab, setActiveTab] = useState(1);
 
 	const jobs = useQuery(api.queries.getJobs);
+
+	const { isAuthenticated } = useConvexAuth();
+
+	if (!isAuthenticated) {
+		return (
+			<div className="pt-10 flex items-center justify-center">
+				<h1>You shouldn&apos;t be here! Please sign in...</h1>
+			</div>
+		);
+	}
 
 	return (
 		<TooltipProvider delayDuration={0}>
@@ -93,7 +103,7 @@ export default function DashboardLayout({
 				>
 					<div className="p-5 pb-10 mb-32 h-full">
 						{activeTab === 0 && <JobForm />}
-						{activeTab === 1 && <JobList />}
+						{activeTab === 1 && <Jobs />}
 					</div>
 				</ResizablePanel>
 			</ResizablePanelGroup>
