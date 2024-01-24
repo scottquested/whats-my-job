@@ -27,8 +27,7 @@ export default function DashboardNav({
 									className={cn(
 										buttonVariants({ variant: link.variant, size: "icon" }),
 										"h-9 w-9",
-										link.variant === "default" &&
-											"dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+										link.variant === "default"
 									)}
 									onClick={() => setActiveTab(index)}
 								>

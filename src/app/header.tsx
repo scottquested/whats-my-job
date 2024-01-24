@@ -1,6 +1,8 @@
 "use client";
 
 import ThemeToggle from "@/components/ThemeToggle";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
 	SignedIn,
 	UserButton,
@@ -24,12 +26,26 @@ export default function Header() {
 			<div className="flex items-center gap-3">
 				<SignedIn>
 					{!path.includes("dashboard") && (
-						<Link href="/dashboard">Go to Dashboard</Link>
+						<Link
+							href="/dashboard"
+							className={cn(buttonVariants({ variant: "default", size: "sm" }))}
+						>
+							Dashboard
+						</Link>
 					)}
 					<UserButton afterSignOutUrl="\" />
 				</SignedIn>
 				<SignedOut>
-					<SignInButton mode="modal" />
+					<SignInButton mode="modal">
+						<span
+							className={cn(
+								buttonVariants({ variant: "default", size: "sm" }),
+								"cursor-pointer"
+							)}
+						>
+							Sign in
+						</span>
+					</SignInButton>
 				</SignedOut>
 				<nav className="flex items-center space-x-1">
 					<ThemeToggle />
