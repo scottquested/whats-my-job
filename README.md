@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# What's my job?
 
-## Getting Started
+This is a React and TypeScript project structured with Next.js and Tailwind CSS for styling. It uses a custom server-side rendering setup and includes a variety of components for building a web application. The project also uses Convex for schema, queries, and mutations.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Before you start, make sure you have Node.js and npm installed on your machine.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository.
+2. Install the dependencies by running `npm install`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The project is structured as follows:
 
-## Learn More
+- `src/`: This is where the main application code resides. It includes:
+  - `app/`: Contains the main application components and global styles.
+  - `components/`: Contains reusable components like `DashboardLayout`, `DashboardNav`, and `JobCard`.
+  - `lib/`: Contains utility functions and libraries.
+- `convex/`: Contains the Convex schema, queries, mutations, and server configuration.
+- `public/`: Contains static files that are served by the server.
+- `.next/`: Contains the output of the Next.js build process.
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To start the development server, run `npm run dev`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome. Please make sure to update tests as appropriate.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the terms of the [LICENSE](LICENSE) file.
+
+## Contact
+
+Please open an issue for any questions or problems.

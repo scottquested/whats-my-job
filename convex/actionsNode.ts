@@ -24,8 +24,6 @@ export const getOpenAiAnswer = internalAction({
 	},
 	handler: async (ctx, { id, skills }) => {
 		try {
-			console.log("getOpenAiAnswer");
-
 			const completion = await openai.chat.completions.create({
 				messages: [
 					{
@@ -44,8 +42,6 @@ export const getOpenAiAnswer = internalAction({
 			const transformResult = JSON.parse(
 				completion.choices[0].message.content || "{}"
 			);
-
-			console.log(transformResult);
 
 			await ctx.runMutation(internal.mutations.updateJob, {
 				id,

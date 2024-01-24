@@ -16,7 +16,7 @@ import { usePathname } from "next/navigation";
 export default function Header() {
 	const path = usePathname();
 	return (
-		<header className="flex justify-between items-center p-4 border-b-2 border-gray-100 dark:border-gray-800 fixed w-full bg-background dark:text-white">
+		<header className="flex justify-between items-center p-4 border-b-2 border-gray-100 dark:border-gray-800 fixed z-50 w-full bg-background dark:text-white">
 			<Link
 				href="/"
 				className="font-bold text-xl flex items-center justify-center gap-2"

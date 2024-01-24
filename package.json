@@ -6,6 +6,10 @@
 		"type": "git",
 		"url": "https://github.com/scottquested/whats-my-job.git"
 	},
+	"bugs": {
+		"url": "https://github.com/scottquested/whats-my-job/issues"
+	},
+	"homepage": "https://github.com/scottquested/whats-my-job",
 	"keywords": [
 		"next",
 		"next.js",
@@ -16,12 +20,8 @@
 		"openai",
 		"clerk"
 	],
-	"author": "",
+	"author": "Scott Quested <me@scottquested.com>",
 	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/scottquested/whats-my-job/issues"
-	},
-	"homepage": "https://github.com/scottquested/whats-my-job",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

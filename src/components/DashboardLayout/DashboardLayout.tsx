@@ -13,10 +13,11 @@ import {
 import DashboardNav from "../DashboardNav";
 import { DashboardLayoutProps } from "./DashboardLayout.types";
 import JobForm from "../JobForm";
-import { useConvexAuth, useQuery } from "convex/react";
+import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { DashboardNavVariant } from "../DashboardNav/DashboardNav.types";
 import Jobs from "../Jobs";
+import { useUser } from "@clerk/clerk-react";
 
 export default function DashboardLayout({
 	navCollapsedSize,
@@ -28,9 +29,9 @@ export default function DashboardLayout({
 
 	const jobs = useQuery(api.queries.getJobs);
 
-	const { isAuthenticated } = useConvexAuth();
+	const { isLoaded, isSignedIn } = useUser();
 
-	if (!isAuthenticated) {
+	if (isLoaded && !isSignedIn) {
 		return (
 			<div className="pt-10 flex items-center justify-center">
 				<h1>You shouldn&apos;t be here! Please sign in...</h1>
@@ -101,7 +102,7 @@ export default function DashboardLayout({
 					minSize={30}
 					className="!overflow-scroll"
 				>
-					<div className="p-5 pb-10 mb-32 h-full">
+					<div className="p-5 pb-10">
 						{activeTab === 0 && <JobForm />}
 						{activeTab === 1 && <Jobs />}
 					</div>

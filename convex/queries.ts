@@ -13,6 +13,7 @@ export const getJobs = query({
 				// Only get jobs for the current user
 				return q.eq(q.field("userId"), identity.subject);
 			})
+			.order("desc")
 			.collect();
 
 		return jobs;

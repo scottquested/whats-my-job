@@ -15,7 +15,7 @@ export default function JobList({ jobs }: JobListProps) {
 				</h1>
 			)}
 			{!jobs && (
-				<div className="h-full flex items-center justify-center">
+				<div className="h-[90svh] flex items-center justify-center">
 					<Loader2 className="animate-spin h-16 w-16 m-auto" />
 				</div>
 			)}
