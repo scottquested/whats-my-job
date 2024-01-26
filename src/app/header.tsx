@@ -14,27 +14,21 @@ export default function Header() {
 		<header className="flex justify-between items-center p-4 border-b-2 border-gray-100 dark:border-gray-800 fixed z-50 w-full bg-background dark:text-white">
 			<Link
 				href="/"
-				className="font-bold text-xl flex items-center justify-center gap-2"
+				className="font-bold text-xl flex items-center justify-center gap-2 cursor-pointer"
 			>
 				<Briefcase className="text-orange-500" /> What&apos;s my job?
 			</Link>
 			<div className="flex gap-4">
-				<Link href="/explore">Explore</Link>
-				<Link href="/create">Create</Link>
+				<Link href="/explore" className="cursor-pointer">
+					Explore
+				</Link>
+				<Link href="/create" className="cursor-pointer">
+					Create
+				</Link>
 			</div>
 			<div>
-				<div className="flex items-center gap-3">
+				<div className="flex items-center gap-3 cursor-pointer">
 					<SignedIn>
-						{!path.includes("dashboard") && (
-							<Link
-								href="/dashboard"
-								className={cn(
-									buttonVariants({ variant: "default", size: "sm" })
-								)}
-							>
-								Dashboard
-							</Link>
-						)}
 						<UserButton afterSignOutUrl="\" />
 					</SignedIn>
 					<SignedOut>

@@ -1,6 +1,6 @@
 import { v } from "convex/values";
 import { internal } from "./_generated/api";
-import { internalMutation, mutation } from "./_generated/server";
+import { mutation } from "./_generated/server";
 
 export const saveJobs = mutation({
 	args: { skills: v.string(), userId: v.string() },
@@ -14,9 +14,10 @@ export const saveJobs = mutation({
 			userId,
 			skills,
 			status: "pending",
+			imageId: "",
 		});
 
-		await ctx.scheduler.runAfter(0, internal.actionsNode.getOpenAiAnswer, {
+		await ctx.scheduler.runAfter(0, internal.actionsNode.getJobBySkills, {
 			id: jobs,
 			skills,
 		});
@@ -41,27 +42,9 @@ export const retryJob = mutation({
 			status: "pending",
 		});
 
-		await ctx.scheduler.runAfter(0, internal.actionsNode.getOpenAiAnswer, {
+		await ctx.scheduler.runAfter(0, internal.actionsNode.getJobBySkills, {
 			id,
 			skills,
-		});
-	},
-});
-
-export const updateJob = internalMutation({
-	args: {
-		id: v.id("jobs"),
-		result: v.optional(v.string()),
-		status: v.union(
-			v.literal("pending"),
-			v.literal("completed"),
-			v.literal("failed")
-		),
-	},
-	handler: async (ctx, { id, result, status }) => {
-		await ctx.db.patch(id, {
-			result,
-			status: status,
 		});
 	},
 });

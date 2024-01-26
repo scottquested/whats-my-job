@@ -16,7 +16,9 @@ import type {
 } from "convex/server";
 import type * as actionsNode from "../actionsNode.js";
 import type * as mutations from "../mutations.js";
+import type * as mutationsInternal from "../mutationsInternal.js";
 import type * as queries from "../queries.js";
+import type * as utils from "../utils.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -29,7 +31,9 @@ import type * as queries from "../queries.js";
 declare const fullApi: ApiFromModules<{
   actionsNode: typeof actionsNode;
   mutations: typeof mutations;
+  mutationsInternal: typeof mutationsInternal;
   queries: typeof queries;
+  utils: typeof utils;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

@@ -11,5 +11,6 @@ export default defineSchema({
 			v.literal("completed"),
 			v.literal("failed")
 		),
+		imageId: v.string(),
 	}),
 });
