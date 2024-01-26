@@ -20,7 +20,7 @@ export default function JobList({ jobs }: JobListProps) {
 				</div>
 			)}
 			{!!jobs?.length && (
-				<ul className="grid grid-cols-2 gap-5">
+				<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 					{jobs?.map((job) => {
 						const result: JobCardResult = JSON.parse(job?.result || "{}");
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession, useUser } from "@clerk/nextjs";
+import { useSession } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "convex/react";
 import React from "react";
@@ -49,34 +49,28 @@ export default function JobForm() {
 	};
 
 	return (
-		<div>
-			<h1 className="text-3xl font-bold mb-4">
-				Generate a new job matched by your skills
-			</h1>
-			<p></p>
-			<Card className="p-5 max-w-[500px]">
-				<Form {...form}>
-					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-						<FormField
-							control={form.control}
-							name="skills"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Skills</FormLabel>
-									<FormControl>
-										<Input placeholder="Add some skills..." {...field} />
-									</FormControl>
-									<FormDescription className="text-xs italic">
-										Comma seperated list of all the skills you have.
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<Button type="submit">Submit</Button>
-					</form>
-				</Form>
-			</Card>
-		</div>
+		<Card className="p-5 max-w-[500px]">
+			<Form {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+					<FormField
+						control={form.control}
+						name="skills"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Skills</FormLabel>
+								<FormControl>
+									<Input placeholder="Add some skills..." {...field} />
+								</FormControl>
+								<FormDescription className="text-xs italic">
+									Comma seperated list of all the skills you have.
+								</FormDescription>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<Button type="submit">Submit</Button>
+				</form>
+			</Form>
+		</Card>
 	);
 }
