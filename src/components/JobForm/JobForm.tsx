@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "@clerk/clerk-react";
+import { useSession, useUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "convex/react";
 import React from "react";
@@ -25,7 +25,8 @@ const formSchema = z.object({
 });
 
 export default function JobForm() {
-	const { user } = useUser();
+	const { session } = useSession();
+	const userId = session?.user.id;
 	const saveJobs = useMutation(api.mutations.saveJobs);
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -35,13 +36,13 @@ export default function JobForm() {
 		},
 	});
 	const onSubmit = async (data: z.infer<typeof formSchema>) => {
-		if (!user) {
+		if (!userId) {
 			return;
 		}
 
 		await saveJobs({
 			skills: data.skills,
-			userId: user.id,
+			userId: userId,
 		});
 
 		form.reset();

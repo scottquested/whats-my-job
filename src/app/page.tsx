@@ -1,15 +1,25 @@
-"use client";
-
-import { useConvexAuth } from "convex/react";
-import Header from "./header";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
 	return (
-		<>
-			<Header />
-			<main className="h-svh flex items-center justify-center">
-				<h1 className="text-8xl">Home page!</h1>
-			</main>
-		</>
+		<main className="h-svh container">
+			<section className="pt-24">
+				<div className="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+					<div className="mr-auto place-self-center lg:col-span-7">
+						<h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+							Find your perfect job with just a few skills
+						</h1>
+						<p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+							Input your skills and we&apos;ll find the perfect job for you.
+						</p>
+						<Button asChild>
+							<Link href="/create">Get started</Link>
+						</Button>
+					</div>
+					<div className="hidden lg:mt-0 lg:col-span-5 lg:flex"></div>
+				</div>
+			</section>
+		</main>
 	);
 }

@@ -7,7 +7,7 @@ export const saveJobs = mutation({
 	handler: async (ctx, { skills, userId }) => {
 		const identity = await ctx.auth.getUserIdentity();
 		if (!identity) {
-			return;
+			throw new Error("Not authenticated");
 		}
 
 		const jobs = await ctx.db.insert("jobs", {
@@ -33,7 +33,7 @@ export const retryJob = mutation({
 	handler: async (ctx, { id, skills }) => {
 		const identity = await ctx.auth.getUserIdentity();
 		if (!identity) {
-			return;
+			throw new Error("Not authenticated");
 		}
 
 		await ctx.db.patch(id, {
